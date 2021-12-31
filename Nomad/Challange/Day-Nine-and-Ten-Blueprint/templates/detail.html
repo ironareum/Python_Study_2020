@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+      <h1>{{results.title}}</h1>
+      <div>
+        {{results.points}}points | By:{{results.author}} | <a href="{{results.url}}" target="_blank">{{results.url}}</a>
+      </div>
+  </header>
+  <main>
+    {% for child in results.children %}
+    <div>
+      {% if child.author == None %}
+        [deleted]
+      {% else %}
+        <strong>{{child.author}}:</strong>
+        <p>{{child.text | safe}}</p>
+      {% endif %}
+    </div>
+    <hr>
+    {% endfor %}
+  </main>
+</body>
+
+</html>
